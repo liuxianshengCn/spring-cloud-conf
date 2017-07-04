@@ -1,8 +1,8 @@
 server:
-  port: 8090
+  port: 8091
 spring:
   application:
-      name: server
+      name: server91
   cloud:
     config:
       server:
