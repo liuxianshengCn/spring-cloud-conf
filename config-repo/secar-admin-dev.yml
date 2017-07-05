@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8110
 
 logging:
   level:
@@ -16,9 +16,9 @@ spring:
   profiles: dev
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.0.71:3306/secar-dev?useUnicode=true&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=TRUE&zeroDateTimeBehavior=convertToNull
-    username: root
-    password: Passw0rd
+    url: jdbc:mysql://192.168.0.71:3306/test
+    username: 123123
+    password: 123123
     # 使用druid数据源
     druid:
       max-active: 20
@@ -48,106 +48,3 @@ spring:
       port: 20880
     scan: com.secar.trip
 
----
-spring:
-  profiles: test
-  datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://106.14.195.157:7500/secar?useUnicode=true&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=TRUE&zeroDateTimeBehavior=convertToNull
-    username: root
-    password: Xingjia@2017
-    # 使用druid数据源
-    druid:
-      initial-size: 1
-      min-idle: 3
-      max-wait: 60000
-      time-between-eviction-runs-millis: 60000
-      min-evictable-idle-time-millis: 300000
-      validation-query: SELECT 'x' FROM DUAL
-      test-while-idle: true
-      test-on-borrow: false
-      test-on-return: false
-  # Redis
-  redis:
-    host: 172.19.235.247
-    port: 6379
-    password: xingjia@2017
-    database: 1
-  #dubbo服务
-  dubbo:
-    application:
-      name: secar-admin
-    registry:
-      address: zookeeper://172.19.235.241:2181
-    protocol:
-      name: dubbo
-      port: 20880
-    scan: com.secar.trip
-
----
-spring:
-  profiles: common_dev
-system:
-  common:
-    #阿里支付回调地址
-    ali-notify-url: http://d-api.xingjiakeji.com/payback/v1/alipay
-    #微信支付回调地址
-    wx-notify-url: http://d-api.xingjiakeji.com/payback/v1/wxpay/callback
-    #OSS访问域名
-    imgs-domain: http://d-image.xingjiakeji.com/
-    #OSS配置
-    alyunoss: ALIYUNOSS_TEST
-    #本地文件访问域名
-    imgs-localhost-domain: http://localhost:${server.port}/file
-    #本地文件存放路径
-    img-root: /Users/daer/webdata/imgs/user/
-    #token密钥
-    app-token-secret: vizyIEBKCu9cnMT3uFMgoOdboOMUuO
-    #token签名
-    app-token-issuer: secar
-    #短信发送间隔时间(单位秒)
-    sms-duration: 60
-    #用户一天发送短信最大条数
-    sms-today-limit: 10
-    #短信有效期(单位秒)
-    sms-valid-time: 1800
-    #语音呼叫主叫号码
-    tts-called-show-num: 02131204636
-    #400服务号码显示
-    serviceNum: 4008888888
-    #违章短信模板
-    illegal-sms: 尊敬的用户您好，您驾驶车辆{0}于{1}在{2}，因{3}，被交通技术监控设备记录，为了不影响您的用车，请及时处理，详情致电客服{4}。
-
----
-spring:
-  profiles: common_test
-system:
-  common:
-    #阿里支付回调地址
-    ali-notify-url: http://d-api.xingjiakeji.com/payback/v1/alipay
-    #微信支付回调地址
-    wx-notify-url: http://d-api.xingjiakeji.com/payback/v1/wxpay/callback
-    #OSS访问域名
-    imgs-domain: http://d-image.xingjiakeji.com/
-    #OSS配置
-    alyunoss: ALIYUNOSS_TEST
-    #本地文件访问域名
-    imgs-localhost-domain: http://d-admin.xingjiakeji.com/file/
-    #本地文件存放路径
-    img-root: /data/fileimgs/
-    #token密钥
-    app-token-secret: vizyIEBKCu9cnMT3uFMgoOdboOMUuO
-    #token签名
-    app-token-issuer: secar
-    #短信发送间隔时间(单位秒)
-    sms-duration: 60
-    #用户一天发送短信最大条数
-    sms-today-limit: 10
-    #短信有效期(单位秒)
-    sms-valid-time: 1800
-    #语音呼叫主叫号码
-    tts-called-show-num: 02131204636
-    #400服务号码显示:q
-    serviceNum: 4008888888
-    #违章短信模板
-    illegal-sms: 尊敬的用户您好，您驾驶车辆{0}于{1}在{2}，因{3}，被交通技术监控设备记录，为了不影响您的用车，请及时处理，详情致电客服{4}。
